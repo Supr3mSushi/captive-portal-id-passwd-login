@@ -216,28 +216,28 @@ input#checkbox.checkTheBox {
     }
 
     .title p {
-        margin: 25px 10px 25px 10px;
+        margin: 25px 10px 25px 20px;
         font-size: 10px;
     }
 
     .card {
         width: 100%;
         max-width: 270px;
-        height: 600px;
+        height: 580px;
     }
 
     .card-use {
-        padding-left: 0;
-        margin-top: -20px;
+        padding-left: 50px;
+        margin-top: 70px;
     }
 
     input#checkbox.checkTheBox {
-        margin-top: 5px;
-        margin-left: 5px;
+        margin-top: 3px;
+        margin-left: -40px;
     }
 
     .modal {
-        top: -100px;
+        top: -60px;
     }
 
     .modal-content {
@@ -245,7 +245,7 @@ input#checkbox.checkTheBox {
     }
 
     .modal-content p {
-        font-size: 20px;
+        font-size: 18px;
     }
 }
 
