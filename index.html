@@ -8,27 +8,25 @@
     <!-- Title -->
     <title>Portail Helios visiteur</title>
     <!-- Icon -->
-    <link rel="shortcut icon" href="../icon/captiveportal-helioshtml.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="captiveportal-helioshtml.ico" type="image/x-icon">
     <!-- Css -->
-    <link rel="stylesheet" href="../css/captiveportal-style.css" type="text/css" media="all">
+    <link rel="stylesheet" href="captiveportal-style.css" type="text/css" media="all">
 </head>
 
 <body>
     <div id="background">
         <div class="card" id="card">
             <div class="header">
-                <img src="../img/captiveportal-Logo-Helios.png" alt="logo">
+                <img src="captiveportal-Logo-Helios.png" alt="logo">
                 <h1>Bienvenue dans votre espace internet !</h1>
             </div>
-            <form method="post" class="form">
-                <!--action="$PORTAL_ACTION$"-->
-                <input type='hidden' name='__csrf_magic'
-                       value="sid:f45c8a0f5e3188839bc4f2f65b37e14a7549a5ff,1685633283;ip:0458fe3cff36b0afba071daf05dc5aa198bb06de,1685633283" />
+            <form method="post" class="form" action="$PORTAL_ACTION$">
                 <input name="auth_user" type="text" placeholder="Identifiant">
                 <input name="auth_pass" type="password" placeholder="Mot de passe">
                 <input name="redirurl" type="hidden" value="$PORTAL_REDIRURL$">
                 <input name="zone" type="hidden" value="$PORTAL_ZONE$">
                 <button name="accept" type="submit" class="button">Se connecter</button>
+<!--                <input class="button" name="accept" type="submit" value="Se Connecter">-->
             </form>
 
             <!-- Modal button : Conditions d'utilisation-->
@@ -91,7 +89,7 @@
             showAlert("Veuillez saisir votre identifiant et votre mot de passe.");
         } else {
             // Vérifier les identifiants et mots de passe
-            var identifiant_correct = "admin";
+            var identifiant_correct = "PcaptifUser";
             var motdepasse_correct = "helios";
 
             if (identifiant === identifiant_correct && motDePasse === motdepasse_correct) {
@@ -107,8 +105,8 @@
 
     // Changement de l'image de fond avec carrousel automatique
     var entreprises = {
-        "entreprise": "../img/captiveportal-hotelVerdon.png",
-        "entreprise1": "../img/captiveportal-hotelVerdon1.png",
+        "entreprise": "captiveportal-hotelVerdon.png",
+        "entreprise1": "captiveportal-hotelVerdon1.png",
         //"entreprise2": "img/hotelVerdon2.jpg",
     };
 
