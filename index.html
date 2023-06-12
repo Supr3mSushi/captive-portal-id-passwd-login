@@ -20,10 +20,10 @@
                 <img src="captiveportal-Logo-Helios.png" alt="logo">
                 <h1>Bienvenue dans votre espace internet !</h1>
             </div>
-            <form method="post" class="form" action="$PORTAL_ACTION$">
+            <form method="post" class="form" action="http://192.168.1.243:8002/index.php?zone=pcaptif">
                 <input name="auth_user" type="text" placeholder="Identifiant">
                 <input name="auth_pass" type="password" placeholder="Mot de passe">
-                <input name="redirurl" type="hidden" value="$PORTAL_REDIRURL$">
+                <input name="redirurl" type="hidden" value="">
                 <input name="zone" type="hidden" value="$PORTAL_ZONE$">
                 <button name="accept" type="submit" class="button">Se connecter</button>
 <!--                <input class="button" name="accept" type="submit" value="Se Connecter">-->
