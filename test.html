@@ -2,11 +2,11 @@
 <html lang="fr">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <link rel="shortcut icon" href="captiveportal-helioshtml.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="icon/captiveportal-helioshtml.ico" type="image/x-icon">
     <title>Erreur</title>
     <style type="text/css">
         body {
-            background-image: url("captiveportal-gorgeVerdon.jpg");
+            background-image: url("img/captiveportal-gorgeVerdon.jpg");
             background-repeat: no-repeat;
             background-size: cover;
             background-attachment: fixed;
@@ -19,14 +19,14 @@
         }
 
         .blurred-bg {
-            background-image: url("captiveportal-gorgeVerdonBlur.jpg");
+            background-image: url("img/captiveportal-gorgeVerdonBlur.jpg");
             background-repeat: no-repeat;
             background-size: cover;
             background-attachment: fixed;
         }
 
         .tinted {
-            background-image: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), url("captiveportal-gorgeVerdonBlur.jpg");
+            background-image: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), url("img/captiveportal-gorgeVerdonBlur.jpg");
         }
 
         .box {
@@ -44,6 +44,11 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+        }
+
+        .content {
+            height: 100%;
+            width: 100%;
         }
 
         h1 {
@@ -74,7 +79,7 @@
         p.related a:hover {
             text-decoration: underline;
         }
-
+        s
         @media only screen and (max-width: 600px) {
             .box {
                 width: 90%;
@@ -91,7 +96,7 @@
 <body>
 <div class="box blurred-bg tinted">
     <div class="content">
-        <img src="captiveportal-Logo-Helios.png" style="height: 150px; width: 150px;">
+        <img src="img/captiveportal-Logo-Helios.png" style="height: 150px; width: 150px;">
         <h1>Identifiant ou mot de passe incorrect.</h1>
         <p class="related"><a href="https://192.168.1.243:44253/services_captiveportal.php?zone=pcaptif&act=viewhtml" target="_blank">Réessayez</a></p>
     </div>
