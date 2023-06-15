@@ -67,30 +67,34 @@
 
 <!-- Js -->
 <script type="text/javascript">
-    // document.getElementById("btnSeConnecter").addEventListener("click", function (event) {
-    //     event.preventDefault();
-    //
-    //     const checkbox = document.querySelector("#checkbox");
-    //     const identifiant = document.getElementsByName("auth_user")[0].value;
-    //     const motDePasse = document.getElementsByName("auth_pass")[0].value;
-    //
-    //     if (!checkbox.checked) {
-    //         showAlert("Veuillez accepter les conditions d'utilisation.");
-    //     } else if (identifiant === "" || motDePasse === "") {
-    //         showAlert("Veuillez saisir votre identifiant et votre mot de passe.");
-    //     } else {
-    //         var identifiant_correct = "PcaptifUser";
-    //         var motdepasse_correct = "helios";
-    //
-    //         if (identifiant === identifiant_correct && motDePasse === motdepasse_correct) {
-    //             window.location.href = document.getElementsByName("redirurl")[0].value;
-    //         } else {
-    //             showAlert("Identifiant ou mot de passe incorrect. Veuillez réessayer.");
-    //             document.getElementsByName("auth_user")[0].value = "";
-    //             document.getElementsByName("auth_pass")[0].value = "";
-    //         }
-    //     }
-    // });
+    var form = document.querySelector('.form');
+    form.addEventListener('submit', function (event) {
+        var usernameInput = document.querySelector('input[name="auth_user"]');
+        var passwordInput = document.querySelector('input[name="auth_pass"]');
+        var acceptCheckbox = document.getElementById('checkbox');
+
+        if (!acceptCheckbox.checked) {
+            event.preventDefault();
+            showAlert("Veuillez accepter les conditions d'utilisation.");
+        } else if (usernameInput.value === '' || passwordInput.value === '') {
+            event.preventDefault();
+            showAlert("Veuillez saisir votre identifiant et votre mot de passe.");
+        }
+    });
+
+    // Fonction utilitaire pour afficher une alerte
+    function showAlert(message) {
+        var alertElement = document.createElement("div");
+        alertElement.classList.add("alert");
+        alertElement.innerText = message;
+
+        var card = document.getElementById("card");
+        card.appendChild(alertElement);
+
+        setTimeout(function () {
+            alertElement.remove();
+        }, 3000);
+    }
 
     // Changement de l'image de fond avec carrousel automatique
     var entreprises = {
@@ -143,20 +147,6 @@
             }
         });
     });
-
-    // Fonction utilitaire pour afficher une alerte
-    function showAlert(message) {
-        var alertElement = document.createElement("div");
-        alertElement.classList.add("alert");
-        alertElement.innerText = message;
-
-        var card = document.getElementById("card");
-        card.appendChild(alertElement);
-
-        setTimeout(function () {
-            alertElement.remove();
-        }, 3000);
-    }
 
     // Fonction pour ajuster la position du bouton des conditions d'utilisation
     function adjustButtonPosition() {
