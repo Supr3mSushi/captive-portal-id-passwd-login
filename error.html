@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="shortcut icon" href="captiveportal-helioshtml.ico" type="image/x-icon">
-    <title>Erreur</title>
+    <title>Page Erreur du Portail Captif</title>
     <style type="text/css">
         body {
             background-image: url("captiveportal-gorgeVerdon.jpg");
@@ -30,8 +30,8 @@
         }
 
         .box {
-            width: 500px;
-            height: 350px;
+            width: 600px;
+            height: 375px;
             position: relative;
             border-radius: 5px;
             box-shadow: 15px 15px 5px rgba(150,150,150,.5);
@@ -46,10 +46,15 @@
             align-items: center;
         }
 
+        .content {
+            height: 100%;
+            width: 100%;
+        }
+
         h1 {
             color: white;
             font-weight: bold;
-            font-size: 30px;
+            font-size: 40px;
             margin: auto;
         }
 
@@ -63,7 +68,7 @@
             font-weight: 800;
             color: black;
             margin-top: 30px;
-            font-size: 20px;
+            font-size: 28px;
         }
 
         p.related a {
@@ -93,7 +98,14 @@
     <div class="content">
         <img src="captiveportal-Logo-Helios.png" style="height: 150px; width: 150px;">
         <h1>Identifiant ou mot de passe incorrect.</h1>
-        <p class="related"><a href="https://192.168.1.243:44253/services_captiveportal.php?zone=pcaptif&act=viewhtml" target="_blank">Réessayez</a></p>
+        <form id="retryForm" method="post" action="$PORTAL_ACTION$">
+            <input name="auth_user" type="hidden" value="admin">
+            <input name="auth_pass" type="hidden" value="helios">
+            <input name="redirurl" type="hidden" value="$PORTAL_REDIRURL$">
+        </form>
+        <p class="related">
+            <a href="#" onclick="document.getElementById('retryForm').submit(); return false;">Réessayer</a>
+            </p>
     </div>
 </div>
 </body>
