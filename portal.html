@@ -19,6 +19,11 @@
         <div class="header">
             <img src="captiveportal-Logo-Helios.png" alt="logo">
             <h1>Bienvenue dans votre espace internet !</h1>
+            <!-- Changement langue -->
+            <div class="language-selector">
+                <img src="captiveportal-francais.png" alt="French" onclick="changeLanguage('fr')">
+                <img src="captiveportal-anglais.png" alt="English" onclick="changeLanguage('en')">
+            </div>
         </div>
         <form method="post" class="form" action="$PORTAL_ACTION$">
             <input name="auth_user" type="text" placeholder="Identifiant">
@@ -78,7 +83,7 @@
             showAlert("Veuillez accepter les conditions d'utilisation.");
         } else if (usernameInput.value === '' || passwordInput.value === '') {
             event.preventDefault();
-            showAlert("Veuillez saisir votre identifiant et votre mot de passe.");
+            showAlert("Veuillez saisir votre identifiant ou votre mot de passe.");
         }
     });
 
@@ -123,6 +128,51 @@
     // Carrousel : changement automatique toutes les 3 secondes
     setInterval(changeBackgroundImage, 3000);
 
+    // Changement de langue
+    function changeLanguage(lang) {
+        var title = document.querySelector(".header h1");
+        var modalTitle = document.querySelector(".modal-title");
+        var modalText = document.querySelector(".modal-content p");
+        var usernameInput = document.querySelector('input[name="auth_user"]');
+        var passwordInput = document.querySelector('input[name="auth_pass"]');
+        var termsLink = document.getElementById("terms-link");
+        var submitButton = document.getElementById("btnSeConnecter");
+        var buttonClose = document.querySelector(".close");
+
+        if (lang === "fr") {
+            // Mettre à jour les textes en français
+            title.innerText = "Bienvenue sur le portail captif";
+            modalTitle.innerText = "Conditions d'utilisation";
+            modalText.innerText = "Hélios sécurité est proposé par Axion Network Informatique\n" +
+                "En validant sur le bouton « se connecter », vous acceptez la traçabilité de votre accès à internet via ce portail.\n" +
+                "Vous reconnaissez être informé des dispositions de lois pour la confiance dans l’économie numérique du 21 juin 2004 (dite LCEN),\n" +
+                "loi n° 2006-64 du 23 janvier 2006, relative à la lutte contre le terrorisme, Décret sur la Traçabilité des données de connexion Internet : Décret du 28 Avril 2015.\n" +
+                "Vous reconnaissez ne pas utilisez cet accès pour toute connexion et/ou visualisation de lien non conforme aux lois en vigueurs (Pédophilie, armes, drogues, etc).\n" +
+                "Les informations de connexions seront conservées pendant 1 an.";
+            usernameInput.setAttribute("placeholder", "Identifiant");
+            passwordInput.setAttribute("placeholder", "Mot de passe");
+            termsLink.innerText = "J'accepte les conditions d'utilisation";
+            submitButton.setAttribute("value", "Se Connecter");
+            buttonClose.innerText = "Fermer";sse.");
+        } else if (lang === "en") {
+            // Mettre à jour les textes en anglais
+            title.innerText = "Welcome to the captive portal";
+            modalTitle.innerText = "Terms of use";
+            modalText.innerText = "Hélios sécurité is provided by Axion Network Informatique.\n" +
+                "By validating the 'se connecter' button, you accept the traceability of your internet access through this portal.\n" +
+                "You acknowledge being informed of the legal provisions for trust in the digital economy of June 21, 2004 (known as LCEN),\n" +
+                "law no. 2006-64 of January 23, 2006, relating to the fight against terrorism, Decree on the Traceability of Internet Connection Data: Decree of April 28, 2015.\n" +
+                "You acknowledge not using this access for any connection and/or viewing of links that are not compliant with current laws (Pedophilia, weapons, drugs, etc).\n" +
+                "Connection information will be retained for 1 year.";
+            usernameInput.setAttribute("placeholder", "Username");
+            passwordInput.setAttribute("placeholder", "Password");
+            termsLink.innerText = "I accept the terms of use";
+            submitButton.setAttribute("value", "Log In");
+            buttonClose.innerText = "Close";
+        }
+    }
+    // Affichage par défault en français
+    changeLanguage('fr');
 
     // Gestion du clic sur l'icône des conditions d'utilisation
     document.addEventListener("DOMContentLoaded", function () {
