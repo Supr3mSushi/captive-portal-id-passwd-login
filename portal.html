@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!--suppress ALL -->
 <html lang="fr">
 
 <head>
@@ -18,7 +19,7 @@
     <div class="card" id="card">
         <div class="header">
             <img src="captiveportal-Logo-Helios.png" alt="logo">
-            <h1>Bienvenue dans votre espace internet !</h1>
+            <h1>Bienvenue dans votre espace internet</h1>
             <!-- Changement langue -->
             <div class="language-selector">
                 <img src="captiveportal-francais.png" alt="French" onclick="changeLanguage('fr')">
@@ -66,7 +67,7 @@
             <br>Les informations de
             connexions seront conservées pendant 1 an.
         </p>
-        <button type="button" class="btn btn-primary close">Fermer</button>
+        <button type="button" class="btn btn-primary close" id="closeButton">Fermer</button>
     </div>
 </div>
 
@@ -81,23 +82,36 @@
         if (!acceptCheckbox.checked) {
             event.preventDefault();
             showAlert("Veuillez accepter les conditions d'utilisation.");
+            showAlert("Please accept the terms of use.");
         } else if (usernameInput.value === '' || passwordInput.value === '') {
             event.preventDefault();
-            showAlert("Veuillez saisir votre identifiant ou votre mot de passe.");
+            showAlert("Veuillez remplir tous les champs.");
+            showAlert("Please fill all the blanks.");
         }
     });
 
     // Fonction utilitaire pour afficher une alerte
     function showAlert(message) {
-        var alertElement = document.createElement("div");
-        alertElement.classList.add("alert");
-        alertElement.innerText = message;
+        var existingAlert = document.querySelector(".alert");
+        var alertElement;
 
-        var card = document.getElementById("card");
-        card.appendChild(alertElement);
+        if (existingAlert) {
+            alertElement = existingAlert;
+        } else {
+            alertElement = document.createElement("div");
+            alertElement.classList.add("alert");
+            var card = document.getElementById("card");
+            card.appendChild(alertElement);
+        }
+
+        alertElement.innerText += message + "\n";
 
         setTimeout(function () {
-            alertElement.remove();
+            if (alertElement.innerText === message + "\n") {
+                alertElement.remove();
+            } else {
+                alertElement.innerText = alertElement.innerText.replace(message + "\n", "");
+            }
         }, 3000);
     }
 
@@ -138,10 +152,10 @@
         var termsLink = document.getElementById("terms-link");
         var submitButton = document.getElementById("btnSeConnecter");
         var buttonClose = document.querySelector(".close");
-
+        var closeButton = document.getElementById("closeButton");
         if (lang === "fr") {
             // Mettre à jour les textes en français
-            title.innerText = "Bienvenue sur le portail captif";
+            title.innerText = "Bienvenue dans votre espace internet ";
             modalTitle.innerText = "Conditions d'utilisation";
             modalText.innerText = "Hélios sécurité est proposé par Axion Network Informatique\n" +
                 "En validant sur le bouton « se connecter », vous acceptez la traçabilité de votre accès à internet via ce portail.\n" +
@@ -153,10 +167,10 @@
             passwordInput.setAttribute("placeholder", "Mot de passe");
             termsLink.innerText = "J'accepte les conditions d'utilisation";
             submitButton.setAttribute("value", "Se Connecter");
-            buttonClose.innerText = "Fermer";sse.");
+            closeButton.innerText = "Fermer";
         } else if (lang === "en") {
             // Mettre à jour les textes en anglais
-            title.innerText = "Welcome to the captive portal";
+            title.innerText = "Welcome to your internet space ";
             modalTitle.innerText = "Terms of use";
             modalText.innerText = "Hélios sécurité is provided by Axion Network Informatique.\n" +
                 "By validating the 'se connecter' button, you accept the traceability of your internet access through this portal.\n" +
@@ -168,11 +182,9 @@
             passwordInput.setAttribute("placeholder", "Password");
             termsLink.innerText = "I accept the terms of use";
             submitButton.setAttribute("value", "Log In");
-            buttonClose.innerText = "Close";
+            closeButton.innerText = "Close";
         }
     }
-    // Affichage par défault en français
-    changeLanguage('fr');
 
     // Gestion du clic sur l'icône des conditions d'utilisation
     document.addEventListener("DOMContentLoaded", function () {
@@ -203,29 +215,19 @@
         var button = document.getElementById('conditions-button');
         var form = document.getElementById('login-form');
         var formRect = form.getBoundingClientRect();
-        var viewportHeight = window.innerHeight || document.documentElement.clientHeight;
 
-        if (button && form) {
-            var buttonRect = button.getBoundingClientRect();
-            var buttonBottom = buttonRect.bottom - formRect.top;33
+        var formBottom = formRect.bottom;
 
-            if (buttonBottom > viewportHeight) {
-                form.style.marginBottom = (buttonBottom - viewportHeight + 10) + 'px';
-            } else {
-                form.style.marginBottom = '';
-            }
-        }
+        button.style.top = formBottom + 'px';
     }
 
-    // Événement de focus sur les éléments de saisie
-    var inputElements = document.querySelectorAll('input');
-    for (var i = 0; i < inputElements.length; i++) {
-        inputElements[i].addEventListener('focus', adjustButtonPosition);
-    }
+    // Appel initial pour ajuster la position du bouton
+    adjustButtonPosition();
 
-    // Événement lorsque le clavier est fermé
+    // Ajuster la position du bouton lorsque la fenêtre est redimensionnée
     window.addEventListener('resize', adjustButtonPosition);
 </script>
+
 </body>
 
 </html>
