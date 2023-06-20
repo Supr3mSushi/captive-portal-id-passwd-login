@@ -104,12 +104,12 @@
             card.appendChild(alertElement);
         }
 
-        alertElement.innerText += message + "\n";
+        if (!alertElement.innerText.includes(message)) {
+            alertElement.innerText += message + "\n";
+        }
 
         setTimeout(function () {
-            if (alertElement.innerText === message + "\n") {
-                alertElement.remove();
-            } else {
+            if (alertElement.innerText.includes(message + "\n")) {
                 alertElement.innerText = alertElement.innerText.replace(message + "\n", "");
             }
         }, 3000);
