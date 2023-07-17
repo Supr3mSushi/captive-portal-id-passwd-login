@@ -201,6 +201,7 @@ input#checkbox.checkTheBox {
     opacity: 0.8;
 }
 
+
 @media (max-width: 767px) {
     .header img {
         width: 150px;
@@ -210,12 +211,12 @@ input#checkbox.checkTheBox {
 
     .header h1 {
         font-size: 25px;
-        margin: 20px 10px 50px 15px;
+        margin: 15px 10px 50px 5px;
     }
 
     .form {
-        padding: 15px;
-        margin-top: -20px;
+        padding: 10px;
+        margin-top: -25px;
     }
 
     .form input {
