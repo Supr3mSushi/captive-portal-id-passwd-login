@@ -1,4 +1,4 @@
-# Captive Portal with Username and Password 👤🔒
+# Captive Portal with Username and Password Login👤🔒
 
 ## Table of Contents 🏠
 1. [Installation](#installation)
@@ -13,13 +13,13 @@
 1. **Clone this repository to your local machine :**
 
     ```bash
-    git clone https://github.com/Supr3mSushi/captive-portal-user-passwd.git
+    git clone https://github.com/Supr3mSushi/captive-portal-user-passwd-login.git
     ```
 
 2. **Navigate to the project directory :**
 
     ```bash
-    cd captive-portal-user-passwd
+    cd captive-portal-user-passwd-login
     ```
 
 3. **Configure the portal for your environment. You may need to adjust the settings as you see fit.**
